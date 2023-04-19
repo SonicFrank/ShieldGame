@@ -9,7 +9,7 @@ window.onload = function() {
     var t = Date.now();
     let speed = 300;
     let dir = 0;
-    let score = 0;
+    let score = 10;
     
 //make wasd and arrow keys work
     let up = document.getElementById('up');
@@ -41,11 +41,11 @@ window.onload = function() {
         var timePassed = (Date.now() - t) / 1000;
         t = Date.now();
 
-        context.clearRect(0, 0, 640, 280);
+        context.clearRect(0, 0, 948, 473); //make canvas a var
         
         context.font = '25px Arial';
         context.fillStyle = 'black';
-        context.fillText("Score: " + score, 20, 30); //change to health
+        context.fillText("Health: " + score, 20, 30); //change to health
 
         context.beginPath();
         context.rect(x, y, 100, 100);
@@ -90,18 +90,26 @@ window.onload = function() {
                 y -= (speed * timePassed);
             }
         }
-
        
         if (coinx <= x+100 && x <= coinx+50 && coiny <= y+100 && y <= coiny+50) {
-            score++;
             coinx = 540;
             coiny = Math.random() * (280-50);
         }
-    
+        if (score <= 0) {
+
+        context.clearRect(0, 0, 948, 473); //make canvas a var
+        
+        context.font = '25px Arial';
+        context.fillStyle = 'black';
+        context.fillText("Game Over: " + score, 20, 30); 
+        }
+
+          
         console.log(coinx);
         
         window.requestAnimationFrame(draw);
     }
+   
     draw();
 }
 
