@@ -81,7 +81,7 @@ window.onload = function() {
             }
         }
         else if(dir == 3) { 
-            if(y+100 < 280) {
+            if(y+100 < 473) {
                 y += (speed * timePassed);
             }
         }
@@ -102,6 +102,10 @@ window.onload = function() {
         context.font = '25px Arial';
         context.fillStyle = 'black';
         context.fillText("Game Over: " + score, 20, 30); 
+
+        coinx = 540;
+        coiny = 540;
+
         }
 
           
